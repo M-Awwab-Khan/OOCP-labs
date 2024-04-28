@@ -6,7 +6,9 @@ int main () {
   std::cout << "Enter time in seconds: ";
   std::cin >> seconds;
 
-  std::cout << "Time in minutes: " << seconds / 60.0 << " mins" << std::endl;
-  std::cout << "Time in hours: " << seconds / 3600.0 << " hrs" << std::endl;
+  std::cout << "Hours: " << seconds / 3600 << " hrs" << std::endl;
+  std::cout << "Minutes: " << (seconds % 3600) / 60 << " mins" << std::endl;
+  std::cout << "Seconds: " << seconds % 60 << " sec" << std::endl;
+
   return 0;
 }
