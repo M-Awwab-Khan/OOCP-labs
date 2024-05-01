@@ -21,10 +21,24 @@ void diamond() {
     cout << white_font;
 }
 
+void rectangle () {
+    for (size_t i = 1; i <= 9; i++)
+    {
+        if (i == 1 or i == 9) {
+            cout << string(5, '*') << endl;
+        } else if (i % 2 != 0) {
+            cout << red_font << "*" << string(3, ' ') << white_font << "*" << endl;
+        } else {
+            cout << endl;
+        }
+    }
+}
 
 int main() {
 
     diamond();
+    rectangle();
+    
 
     return 0;
 }
