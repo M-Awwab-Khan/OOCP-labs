@@ -1,19 +1,30 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int main() {
-    int lines {};
-    cin >> lines;
+const string red_font = "\033[31m";
+const string white_font = "\033[0m";
 
-    for (int i = 1; i <= lines; i++) {
-        for (int space = 5; space >= 0; space--) {
-            cout << " ";
-        }
-        for (int star = 1; star <= 10; star += 2){
-            cout << "*";
-        }
-        cout << endl;
+void diamond() {
+    for (int i = 1; i <= 4; i++) {
+        if (i==1) {cout << red_font << string((5-i), ' ') + string(2*i - 1, '*') << endl;}
+        else {cout << white_font << string((5-i), ' ') + string(2*i - 1, '*') << endl;}
     }
+
+    cout << string(9, '*') << endl;
+
+    for (int i = 4; i >= 1; i--) {
+        if (i==1) {cout << red_font << string((5-i), ' ') + string(2*i - 1, '*') << endl;}
+        else {cout << white_font << string((5-i), ' ') + string(2*i - 1, '*') << endl;}
+    }
+
+    cout << white_font;
+}
+
+
+int main() {
+
+    diamond();
 
     return 0;
 }
