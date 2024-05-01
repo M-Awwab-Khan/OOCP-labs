@@ -34,10 +34,20 @@ void rectangle () {
     }
 }
 
+void number_pyramid() {
+    string prev = "1";
+    for (int i = 1; i <= 4; i++) {
+        cout << string((5-i), ' ') + prev << endl;
+        prev.push_back(to_string(i+1));
+        prev.insert(0, to_string(i+1));
+    }
+}
+
 int main() {
 
-    diamond();
-    rectangle();
+    // diamond();
+    // rectangle();
+    number_pyramid();
     
 
     return 0;
