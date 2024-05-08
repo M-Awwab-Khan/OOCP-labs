@@ -36,19 +36,44 @@ void rectangle () {
 
 void number_pyramid() {
     string prev = "1";
-    for (int i = 1; i <= 4; i++) {
-        cout << string((5-i), ' ') + prev << endl;
-        prev.push_back(to_string(i+1));
+    for (int i = 1; i <= 5; i++) {
+        cout << string((6-i), ' ') + prev << endl;
+        prev.push_back(to_string(i+1).data()[0]);
         prev.insert(0, to_string(i+1));
     }
 }
 
+void half_pyramid() {
+  for (size_t i = 1; i <= 5; i++) {
+    if (i==1) { cout << red_font << "*" << endl; }
+    else { cout << white_font << string(i, '*') << endl; }
+  }
+}
+
+void butterfly() {
+  for (size_t i = 1; i <= 4; i++) {
+    if (i == 1) {cout << red_font << string(i, '*') << white_font << string(10-2*i, ' ') << string(i, '*') << endl; }
+    else {cout << string(i, '*') << string(10-2*i, ' ') << string(i, '*') << endl; }
+  }
+
+  for(size_t i = 1; i <= 2; i++) {
+    cout << string(10, '*') << endl;
+  }
+
+  for (size_t i = 4; i >= 1; i--) {
+    if (i == 1) {cout << red_font << string(i, '*') << white_font << string(10-2*i, ' ') << string(i, '*') << endl; }
+    else {cout << string(i, '*') << string(10-2*i, ' ') << string(i, '*') << endl; }
+  }
+
+
+}
+
 int main() {
 
-    // diamond();
-    // rectangle();
+    diamond();
+    rectangle();
     number_pyramid();
-    
-
+    half_pyramid();   
+    butterfly();
     return 0;
 }
