@@ -1,40 +1,26 @@
 #include <iostream>
+#include <set>
 
-using namespace std;
-
-void removeNumber(int numbers[], int idx, int &size) {
-	int i;
-	for(i = idx; i < size - 1; i++)
-		numbers[i] = numbers[i + 1];
-	size--;
+void removeDuplicates(int arr[], int& size) {
+    std::set<int> uniqueElements(arr, arr + size);
+    size = uniqueElements.size();
+    int i = 0;
+    for (int element : uniqueElements) {
+        arr[i++] = element;
+    }
 }
 
-void removeDuplicate(int numbers[], int &size) {
-	int i, j;
-	int number;
-	for(i = 0; i < size; i++)
-	{
-		number = numbers[i];
-		for(j = i + 1; j < size; j++)
-		{
-			if(number == numbers[j])
-			{
-				removeNumber(numbers, j, size); j--;			
-			}
-		}
-	}
-}
+int main() {
+    int arr[] = {1, 2, 3, 4, 2, 3, 5, 6, 7, 8, 1};
+    int size = 11;
 
-int main()
-{
-	int i;
-	int numbers[] = { 1,4,9,16,9,7,4,9,4,11 };
+    removeDuplicates(arr, size);
 
-	int size = 10;
-	removeDuplicate(numbers, size);
-	
-	for(i = 0; i < size; i++)
-	cout << numbers[i] << ' '; cout << endl;
-	
+    std::cout << "Array after removing duplicates: ";
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
     return 0;
 }
