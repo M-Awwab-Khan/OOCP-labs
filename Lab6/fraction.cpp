@@ -17,12 +17,19 @@ public:
         numerator /= gcd;
         denominator /= gcd;
     }
+
+    int getNumerator() {
+        return numerator;
+    }
+    int getDenominator() {
+        return denominator;
+    }
 };
 
 int main() {
     Fraction frac(6, 9);
     frac.simplify();
-    std::cout << "Simplified Fraction: " << frac.numerator << "/" << frac.denominator << std::endl;
+    std::cout << "Simplified Fraction: " << frac.getNumerator() << "/" << frac.getDenominator() << std::endl;
 
     return 0;
 }
