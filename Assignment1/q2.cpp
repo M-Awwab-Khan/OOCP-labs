@@ -3,7 +3,7 @@
 #include "Book.h"
 
 int main() {
-    Library library;
+    Elibrary library;
     char choice;
     do {
         cout << "Menu:\n";
@@ -17,6 +17,7 @@ int main() {
         
         switch (choice) {
             case 'a':
+              {
                 char pubID[20], title[100], author[100];
                 cout << "Enter Publication ID: ";
                 cin >> pubID;
@@ -32,6 +33,8 @@ int main() {
                 } else {
                     cout << "Successfullly added the book\n";
                 }
+                break;
+              }
             // case 'b':
             //     library.editBook();
             //     break;
