@@ -9,7 +9,7 @@ int main() {
     int s1, s2, s3;
     do {
      cout << "Enter 3 postive numbers between 0 and 39 to set combination: ";
-    cin >> s1 >> s2 >> s3;
+      cin >> s1 >> s2 >> s3;
 
     } while ((s1 < 0 || s1 > 39) || (s2 < 0 || s2 > 39) || (s3 < 0 || s3 > 39));
 
