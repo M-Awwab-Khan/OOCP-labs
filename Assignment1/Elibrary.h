@@ -2,6 +2,7 @@
 #define ELIBRARY_H
 #include <vector>
 #include "Book.h"
+using namespace std;
 
 
 class Elibrary
@@ -13,7 +14,6 @@ private:
 
 public:
     Elibrary();
-    ~Elibrary();
     bool addBook(const char* pubID, const char* title, const char* author);
     bool editBook(const char* pubID, const char* newTitle, const char* newAuthor);
     bool deleteBook(const char* pubID);

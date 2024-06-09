@@ -1,5 +1,11 @@
 #include <iostream>
+#include <cstring>
 #include "Elibrary.h"
+using namespace std;
+
+Elibrary::Elibrary() {
+
+}
 
 
 bool Elibrary::isDuplicate(const char* pubID) const {
@@ -18,7 +24,7 @@ bool Elibrary::addBook(const char* pubID, const char* title, const char* author)
     }
 
     Book newBook(pubID, title, author);
-    books.push_back(new_book);
+    books.push_back(newBook);
     return true;
 }
 

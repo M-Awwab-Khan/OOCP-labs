@@ -1,8 +1,10 @@
 #include <cstring>
+#include <iostream>
 #include "Book.h"
+using namespace std;
 
 // The constructor
-Book::Book(const char* pubID = "", const char* t = "", const char* a = "")
+Book::Book(const char* pubID, const char* t, const char* a)
 {
     strcpy(publicationID, pubID);
     strcpy(title, t);
