@@ -1,11 +1,12 @@
 #include <cstring>
 #include "Elibrary.h"
+#include <memory>
+#include <iostream>
 using namespace std;
 
 Elibrary::Elibrary() {
 
 }
-
 
 bool Elibrary::isDuplicate(const char* pubID) const {
     for (const auto& book : books) {
@@ -36,16 +37,44 @@ bool Elibrary::editBook(const char* pubID, const char* newTitle, const char* new
     return false;
 }
 
+bool Elibrary::addSubscriberToBook(const char* pubID, const char* subscriber) {
+    auto bookPtr = findBook(pubID);
+    if (bookPtr) {
+        bookPtr->addSubscriber(subscriber);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool Elibrary::removeSubscriberFromBook(const char* pubID, const char* subscriber) {
+    auto bookPtr = findBook(pubID);
+    if (bookPtr) {
+        bookPtr->removeSubscriber(subscriber);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 bool Elibrary::deleteBook(const char* pubID) {
-    // Use an iterator to find the book
     for (auto it = books.begin(); it != books.end(); ++it) {
         if (strcmp(it->getPublicationID(), pubID) == 0) {
-            books.erase(it);  // Erase the book from the vector using the iterator
-            return true;  // Exit the function after deletion
+            books.erase(it); 
+            return true; 
         }
     }
     return false;
 }
+
+shared_ptr<Book> Elibrary::findBook(const char* pubID) {
+        for (auto& book: books) {
+            if (strcmp(pubID, book.getPublicationID()) == 0) {
+                return make_shared<Book>(book);
+            }
+        }
+        return nullptr;
+    }
 
 void Elibrary::displayAllBooks() const {
     if (books.empty()) {
