@@ -92,7 +92,7 @@ int main() {
                 if (response) {
                   cout << "Subscriber added :)\n";
                 } else {
-                  cout << "Book not found :(";
+                  cout << "Book not found :(\n";
                 }
                 break;
               }
@@ -109,7 +109,7 @@ int main() {
                 if (response) {
                   cout << "Subscriber removed :(\n";
                 } else {
-                  cout << "Book not found :)";
+                  cout << "Book not found :)\n";
                 }
                 break;
               }
