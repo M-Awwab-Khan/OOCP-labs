@@ -2,6 +2,7 @@
 #include "Elibrary.h"
 #include <memory>
 #include <iostream>
+#include "Book.h"
 using namespace std;
 
 Elibrary::Elibrary() {
@@ -67,10 +68,10 @@ bool Elibrary::deleteBook(const char* pubID) {
     return false;
 }
 
-shared_ptr<Book> Elibrary::findBook(const char* pubID) {
+Book* Elibrary::findBook(const char* pubID) {
         for (auto& book: books) {
             if (strcmp(pubID, book.getPublicationID()) == 0) {
-                return make_shared<Book>(book);
+                return &book;
             }
         }
         return nullptr;
