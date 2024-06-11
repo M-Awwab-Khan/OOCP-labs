@@ -27,6 +27,10 @@ void Book::addSubscriber(const char* subscriber) {
     char* sub = new char[strlen(subscriber) + 1];
     strcpy(sub, subscriber);
     patronSubscribers.push_back(sub);
+    for (auto& subs: patronSubscribers) {
+        cout << subs << endl;
+    }
+    cout << "\n";
 }
 
 // Remove a subscriber from the list
@@ -46,8 +50,8 @@ void Book::displayBook() const {
     cout << "Title: " << title << "\n";
     cout << "Author: " << author << "\n";
     cout << "Patron Subscribers: ";
-    for (const auto& sub : patronSubscribers) {
-        cout << sub << " ";
+    for (auto& sub: patronSubscribers) {
+        cout << sub << endl;
     }
     cout << "\n";
 }
