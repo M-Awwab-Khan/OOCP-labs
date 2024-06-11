@@ -3,6 +3,7 @@
 #include <memory>
 #include <iostream>
 #include "Book.h"
+#include <algorithm>
 using namespace std;
 
 Elibrary::Elibrary() {
@@ -19,7 +20,7 @@ bool Elibrary::isDuplicate(const char* pubID) const {
 }
 
 bool Elibrary::addBook(const char* pubID, const char* title, const char* author) {
-    if (isDuplicate(pubID)) {
+    if (findBook(pubID)) {
         return false;
     }
 
@@ -29,13 +30,13 @@ bool Elibrary::addBook(const char* pubID, const char* title, const char* author)
 }
 
 bool Elibrary::editBook(const char* pubID, const char* newTitle, const char* newAuthor) {
-    for (auto& book : books) {
-        if (strcmp(book.getPublicationID(), pubID) == 0) {
-            book.editDetails(newTitle, newAuthor);
-            return true;
-        }
+    auto bookPtr = findBook(pubID);
+    if (bookPtr) {
+        bookPtr->editDetails(newTitle, newAuthor);
+        return true;
+    } else {
+        return false;
     }
-    return false;
 }
 
 bool Elibrary::addSubscriberToBook(const char* pubID, const char* subscriber) {
@@ -59,10 +60,13 @@ bool Elibrary::removeSubscriberFromBook(const char* pubID, const char* subscribe
 }
 
 bool Elibrary::deleteBook(const char* pubID) {
-    for (auto it = books.begin(); it != books.end(); ++it) {
-        if (strcmp(it->getPublicationID(), pubID) == 0) {
-            books.erase(it); 
-            return true; 
+    Book* book = findBook(pubID);
+    if (book != nullptr) {
+
+        auto it = std::find(books.begin(), books.end(), *book);
+        if (it != books.end()) {
+            books.erase(it);
+            return true;
         }
     }
     return false;
