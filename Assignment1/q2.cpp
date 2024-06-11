@@ -12,7 +12,9 @@ int main() {
         cout << "b. Edit Details of an Available Book\n";
         cout << "c. Delete A Book\n";
         cout << "d. Display All Books in the Library\n";
-        cout << "e. Exit\n";
+        cout << "e. Add Subscriber to a Book\n";
+        cout << "f. Remove Subscriber from a Book\n";
+        cout << "g. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         
@@ -77,13 +79,47 @@ int main() {
             case 'd':
                 library.displayAllBooks();
                 break;
+
             case 'e':
+              {
+                char pubID[20], subscriber[100];
+                cout << "Enter Publication ID of the book: ";
+                cin >> pubID;
+                cout << "Enter Subscriber Name: ";
+                cin.ignore();
+                cin.getline(subscriber, 100);
+                bool response = library.addSubscriberToBook(pubID, subscriber);
+                if (response) {
+                  cout << "Subscriber added :)\n";
+                } else {
+                  cout << "Book not found :(";
+                }
+                break;
+              }
+
+            case 'f':
+              {
+                char pubID[20], subscriber[100];
+                cout << "Enter Publication ID of the book: ";
+                cin >> pubID;
+                cout << "Enter Subscriber Name: ";
+                cin.ignore();
+                cin.getline(subscriber, 100);
+                bool response = library.removeSubscriberFromBook(pubID, subscriber);
+                if (response) {
+                  cout << "Subscriber removed :(\n";
+                } else {
+                  cout << "Book not found :)";
+                }
+                break;
+              }
+            case 'g':
                 cout << "Exiting...\n";
                 break;
             default:
                 cout << "Invalid choice. Try again.\n";
         }
-    } while (choice != 'e');
+    } while (choice != 'g');
     
     return 0;
 }
