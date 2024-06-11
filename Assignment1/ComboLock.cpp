@@ -1,6 +1,5 @@
 #include <string>
 #include "ComboLock.h"
-#include <iostream>
 using namespace std;
 
 ComboLock::ComboLock(int s1, int s2, int s3){
@@ -16,17 +15,17 @@ void ComboLock::reset() {
 }
 
 void ComboLock::turnRight(int ticks) {
-  dial -= ticks;
-  dial += 40;
- cout << dial << endl;
+  dial = (dial - ticks) % 40;
+  if (dial < 0) {
+      dial += 40;
+  }
   dialHistory.push_back(to_string(dial) + "r");
 }
 
 void ComboLock::turnLeft(int ticks) {
   dial += ticks;
   dial %= 40;
-  dial = abs(dial);
-  cout << dial << endl;
+  
   dialHistory.push_back(to_string(dial) + "l");
 }
 

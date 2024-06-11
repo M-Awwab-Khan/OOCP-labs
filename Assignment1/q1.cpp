@@ -23,7 +23,8 @@ int main() {
       cout << "Enter 2 to turn left: " << endl;
       cout << "Enter 3 to reset: " << endl;
       cout << "Enter 4 to open: " << endl;
-      cout << "Enter 5 to exit : " << endl;
+      cout << "Enter 5 to exit: " << endl;
+      cout << "Enter your choice: ";
       cin >> choice;
 
       if (choice == 1) {
@@ -39,7 +40,7 @@ int main() {
       else if (choice == 2) {
         int ticks;
         do {
-          cout << "Enter positive number of ticks to turn right: ";
+          cout << "Enter positive number of ticks to turn left: ";
           cin >> ticks;
         } while (ticks < 0);
 
@@ -63,12 +64,12 @@ int main() {
       }
 
       else if (choice == 5) {
-        cout << "Exiting...";
+        cout << "Exiting...\n";
         break;
       }
 
       else{
-        cout << "Invalid input. Try again";
+        cout << "Invalid input. Try again\n";
       }
     
     }

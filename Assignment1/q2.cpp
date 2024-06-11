@@ -17,6 +17,7 @@ int main() {
         cout << "g. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
+        cout << "\n";
         
         switch (choice) {
             case 'a':
