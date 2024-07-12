@@ -2,7 +2,7 @@
 
 int main() {
     int amount {};
-    
+
     std::cout << "Enter the amount in rupees: ";
     std::cin >> amount;
 
@@ -14,7 +14,7 @@ int main() {
     int fives = (((((amount % 1000) % 500) % 100) % 50) % 10) / 5;
     int twos = ((((((amount % 1000) % 500) % 100) % 50) % 10) % 5) / 2;
     int ones = (((((((amount % 1000) % 500) % 100) % 50) % 10) % 5) % 2) / 1;
-    
+
     std::cout << "Denominations:" << std::endl;
     std::cout << "1000s: " << thousands << std::endl;
     std::cout << "500s: " << fiveHundreds << std::endl;
